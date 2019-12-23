@@ -1,0 +1,26 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace TaxiNumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string pattern = @"^([1-7]T[AB]X|7TEX) (?!0000)[0-9]{4}$";
+            var regex = new Regex(pattern);
+            int numberOfInputString = Convert.ToInt32(Console.ReadLine());
+            string inputString = null;
+            int counter = 0;
+            
+            for (int i = 0; i < numberOfInputString; i++)
+            {
+                inputString = Convert.ToString(Console.ReadLine());
+
+                if (regex.IsMatch(inputString))
+                    counter++;
+            }
+            Console.Write(counter);
+        }
+    }
+}
